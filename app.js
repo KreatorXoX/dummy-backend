@@ -35,7 +35,7 @@ app.post("/posts", async (req, res) => {
     ...postData,
     id: Math.random().toString(),
   };
-  const updatedPosts = [newPost, ...existingPosts];
+  const updatedPosts = [...existingPosts, newPost];
   await storePosts(updatedPosts);
   res.status(201).json({ message: "Stored new post.", post: newPost });
 });
